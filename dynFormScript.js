@@ -8,12 +8,13 @@ function myFunction() {
   form.deleteItem(prevQns[0]);
   
   // Form is cleared
-  
-  var ss = SpreadsheetApp.openById("1JL50HHduQ_VPTazYWR1xwjU2AcfYtZKlG067Chiv0F4");
+  // Obtain the list of questions stored in a spreadsheet
+  var ss = SpreadsheetApp.openById(/*GSheet ID goes here*/);
   var qnSheet = ss.getSheetByName("Questions");
   qnSheet.activate();
   
-  var ss1 = SpreadsheetApp.openById("1H_a6VZasGh4lQHS7yzOGrNJlMx10xQV2zTiNnQd9NSk");
+  //Open another spreadsheet to store responses to questions
+  var ss1 = SpreadsheetApp.openById(/*GSheet ID goes here*/);
   
   Logger.log("Sheet No. %s opened.", qnSheet.getSheetId());
 
@@ -24,7 +25,7 @@ function myFunction() {
   var qnArray = [];
   
   var newQn = false;
-  
+  // TODO : clean up the question prompt, make it more intuitive
   do{
     var response = ui.prompt("New Question", "Enter a question, or skip to form(Yes to add another, No to stop adding, Cancel to skip)", ui.ButtonSet.YES_NO_CANCEL);
     
